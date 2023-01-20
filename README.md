@@ -10,6 +10,9 @@ The game is developed using [Unity 3D](https://unity.com), and is scheduled to b
     
   - **Status**:  Early Minimum Prototype 
 
+**Base Gameplay**:
+Player controls a ship that can move on the X axis, navigating through levels of obstacles. As the game progresses, the speed increases.
+Base gameplay inspired by [Race The Sun game](https://store.steampowered.com/app/253030/Race_The_Sun/), gameplay pending design and features.
 
 ## Dependencies
 - Unity Editor Version 2020.3.30f1
@@ -33,6 +36,14 @@ The game is developed using [Unity 3D](https://unity.com), and is scheduled to b
 # Getting involved
 **Status:** Actively looking for contributions.
 
+## Looking For
+- Game Designers
+- Coders
+- Modelers
+- UI Artists
+- SFX/VFX Artists
+
+
 ## How to Contribute
 
 Read the [Contribution Guidelines](CONTRIBUTIONS.md)
@@ -52,4 +63,5 @@ Join the [Isotopic Discord Community](https://discord.gg/zZqNycn6FJ), to discuss
 ## Credits and references
 
 1. Initiative by [Isotopic](https://isotopic.io)
+2. Inspired by [Race The Sun game](https://store.steampowered.com/app/253030/Race_The_Sun/)
 2. The [discord community of Isotopic](https://discord.gg/zZqNycn6FJ) for its contributions and support
