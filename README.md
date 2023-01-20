@@ -35,15 +35,11 @@ The game is developed using [Unity 3D](https://unity.com), and is scheduled to b
 
 ## How to Contribute
 
-(N/A)
+Read the [Contribution Guidelines](CONTRIBUTIONS.md)
 
 ## Known issues
 
-(N/A)
-
-## Getting help / Submitting an Issue
-
-(N/A)
+Check out [Issues](https://github.com/IsotopicIO/iso-space-game/issues)
 
 ## Discussions
 
