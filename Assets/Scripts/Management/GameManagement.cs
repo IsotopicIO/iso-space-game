@@ -84,4 +84,15 @@ public class GameManagement : MonoBehaviour
             mapSegments.AddLast(newSegment);
         }
     }
+
+    public void ResetLevel()
+    {
+        foreach (MapSegment segment in mapSegments)
+        {
+            Destroy(segment.gameObject);
+        }
+
+        mapSegments.Clear();
+        InitMap();
+    }
 }
