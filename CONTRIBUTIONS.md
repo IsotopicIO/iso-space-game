@@ -29,3 +29,5 @@ This project will use [Github Issues](https://github.com/IsotopicIO/iso-space-ga
 Please add the appropriate labels when creating a new issue, and be as descriptive as possible.
 
 (More guidelines and info will be added here in the future)
+
+**Check out [these](https://github.com/IsotopicIO/iso-space-game/issues/5) features that can be worked on, while the main ideas of the game are being defined**
