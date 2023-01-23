@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////
+//
+//  This singleton holds data about the current game, and is currently responsible for loading
+//  and scrolling the map.
+//             
+//
+////////////////////////////////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,23 +16,35 @@ public class GameManagement : MonoBehaviour
 
     public ShipController ShipController;
 
+    [Tooltip("The initial scrolling speed of the map, when the game starts")]
     public float MapStartingMovingSpeed = 10f;
+
+    [Tooltip("Acceleration applied to the map as the game progresses")]
     public float MapMovingAcceleration = 5f;
+
     [HideInInspector] public float CurrentMovementSpeed = 0f;
 
+    [Tooltip("A parent transform, under which all the map segments will be instantiated")]
     public Transform MapParent;
+
+    [Tooltip("An array of MapSegment prefabs, holding all the possible map segments")]
     public MapSegment[] MapPrefabs;
+
+    [Tooltip("How many map segments are loaded at a time")]
     public int MaxLoadedMapSegments;
+
     private LinkedList<MapSegment> mapSegments = new LinkedList<MapSegment>();
 
     private void Awake()
     {
+        //Singleton logic
         if (Instance == null)
         {
             Instance = this;
         } else
         {
             Destroy(this);
+            Debug.LogWarning($"Two instances of {nameof(GameManagement)}, which is a Singleton, found in scene.");
         }
     }
 
@@ -64,12 +84,17 @@ public class GameManagement : MonoBehaviour
 
     public void UpdateMap()
     {
+        //Update and pply current map scrolling speed to all map segments 
+
         CurrentMovementSpeed += MapMovingAcceleration * Time.deltaTime;
         var deltaMovement = - CurrentMovementSpeed * Time.deltaTime * Vector3.forward;
         foreach (Transform t in MapParent.transform)
         {
             t.position += deltaMovement;
         }
+
+        //Check if the first segment is behind the ship to remove it and instantiate the new one
+
         var firstSegment = mapSegments.First.Value;
 
         if (ShipController.transform.position.z - firstSegment.EndPoint.position.z > firstSegment.MaxOffsetFromPlayerBeforeRemove)
