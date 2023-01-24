@@ -21,7 +21,6 @@ Base gameplay inspired by [Race The Sun game](https://store.steampowered.com/app
 
 - Download Unity Editor 2020.3.30f1
 - Clone repository
-- Switch branch to `development` to get the latest development version
 - Open installation folder with Unity (Use version 2020.3.30f1)
 
 
@@ -46,7 +45,8 @@ Base gameplay inspired by [Race The Sun game](https://store.steampowered.com/app
 
 ## How to Contribute
 
-Read the [Contribution Guidelines](CONTRIBUTIONS.md)
+- Read the [Contribution Guidelines](CONTRIBUTIONS.md)
+- Check out the [Project Documentation](PROJECT_DOCUMENTATION.md)
 
 ## Known issues
 
