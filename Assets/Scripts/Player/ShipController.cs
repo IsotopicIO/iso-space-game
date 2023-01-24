@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////
+//
+//  This component will enable flight controls on the gameobject it is placed on,
+//  giving the player steering control of the ship, using A, D or LeftArrow, RightArrow
+//
+//  Attach ShipController to the ship game object.              
+//
+////////////////////////////////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +15,16 @@ public class ShipController : MonoBehaviour
 {
     public GameManagement gameManagement;
 
+    [Tooltip("The max horizontal speed that the ship can reach.")]
     public float TurningMaxSpeed = 30f;
+
+    [Tooltip("The horizontal acceleration applied to the ship when player moves.")]
     public float TurningAccceleration = 40f;
+
+    [Tooltip("The horizontal acceleration applied towards the opposite side of movement, when there is no input, to slow the ship down.")]
     public float TurningSpeedDamping = 20f;
+
+    [Tooltip("This is multiplied with the ship's current horizontal speed, to get the Z rotation of the ship, based on turning ship")]
     public float RotationToTurnSpeedRatio = 1.3f;
 
     public Camera shipCamera;
@@ -53,6 +69,9 @@ public class ShipController : MonoBehaviour
         shipCamera.transform.position = transform.position + cameraOffset;
     }
 
+    /// <summary>
+    /// A struct holding information about a frame's input
+    /// </summary>
     public struct ShipControllerInput
     {
         public bool TurnRight;
