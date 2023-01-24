@@ -13,7 +13,8 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    public GameManagement gameManagement;
+    public GameManagement GameManagement;
+    public Transform ShipVisualsParent;
 
     [Tooltip("The max horizontal speed that the ship can reach.")]
     public float TurningMaxSpeed = 30f;
@@ -36,7 +37,7 @@ public class ShipController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameManagement.ResetLevel();
+        GameManagement.ResetLevel();
     }
 
     private void Update()
@@ -61,7 +62,8 @@ public class ShipController : MonoBehaviour
         CurrentTurningSpeed = Mathf.Clamp(CurrentTurningSpeed + ((turningSign == 0 && !Mathf.Approximately(CurrentTurningSpeed, 0f)) ? -Mathf.Sign(CurrentTurningSpeed) * TurningSpeedDamping * Time.deltaTime : turningSign * TurningAccceleration * Time.deltaTime), -TurningMaxSpeed, TurningMaxSpeed);
 
         transform.position += Vector3.right * CurrentTurningSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0f, 0f, -RotationToTurnSpeedRatio * CurrentTurningSpeed) * Quaternion.identity;
+
+        ShipVisualsParent.rotation = Quaternion.Euler(0f, 0f, -RotationToTurnSpeedRatio * CurrentTurningSpeed) * Quaternion.identity;
     }
 
     private void MoveCamera()
