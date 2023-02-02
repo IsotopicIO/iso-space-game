@@ -57,6 +57,7 @@ public class GameManagement : MonoBehaviour
     {
         CurrentMovementSpeed = MapStartingMovingSpeed;
         MapSegment previousSegment = null;
+        UIManager.Instance.StartGameTimer();
         for (int i=0; i< MaxLoadedMapSegments; i++)
         {
             var segment = Instantiate(MapPrefabs[Random.Range(0, MapPrefabs.Length)]);
