@@ -10,10 +10,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI ScoreText;
 
-    private float elapsedTime;
-    private TimeSpan totalTime;
-    private bool isTimerRunning;
-
     //create UIManager Instance for global referencing
     public static UIManager Instance;
 
@@ -33,35 +29,11 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        isTimerRunning = false;
-        elapsedTime = 0f;
     }
 
-    public void StartGameTimer()
+    public void SetScoreText(TimeSpan totalTime)
     {
-        ResetGameTimer();
-
-        isTimerRunning = true;
-        StartCoroutine(CountUpScore());
-    }
-    public void StopGameTimer()
-    {
-        StopCoroutine(CountUpScore());
-    }
-    private void ResetGameTimer()
-    {
-        elapsedTime = 0f;
-    }
-
-    private IEnumerator CountUpScore()
-    {
-        while (isTimerRunning)
-        {
-            elapsedTime += Time.deltaTime;
-            totalTime = TimeSpan.FromSeconds(elapsedTime);
-            ScoreText.text = totalTime.ToString("m':'ss'.'ff");
-            yield return null;
-        }
+        ScoreText.text = totalTime.ToString("m':'ss'.'ff");
     }
 
 }
