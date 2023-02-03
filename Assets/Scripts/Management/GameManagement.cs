@@ -6,6 +6,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,12 @@ public class GameManagement : MonoBehaviour
 
     private LinkedList<MapSegment> mapSegments = new LinkedList<MapSegment>();
 
+    // in game timer variables
+    private float elapsedTime;
+    private TimeSpan totalTime;
+    private bool isTimerRunning;
+    private IEnumerator timer;
+
     private void Awake()
     {
         //Singleton logic
@@ -50,6 +57,11 @@ public class GameManagement : MonoBehaviour
 
     private void Start()
     {
+        //init in game timer
+        isTimerRunning = false;
+        elapsedTime = 0f;
+        timer = CountUpScore();
+
         InitMap();
     }
 
@@ -57,9 +69,10 @@ public class GameManagement : MonoBehaviour
     {
         CurrentMovementSpeed = MapStartingMovingSpeed;
         MapSegment previousSegment = null;
+        StartGameTimer();
         for (int i=0; i< MaxLoadedMapSegments; i++)
         {
-            var segment = Instantiate(MapPrefabs[Random.Range(0, MapPrefabs.Length)]);
+            var segment = Instantiate(MapPrefabs[UnityEngine.Random.Range(0, MapPrefabs.Length)]);
             segment.transform.parent = MapParent;
             if (i == 0)
             {
@@ -102,7 +115,7 @@ public class GameManagement : MonoBehaviour
             mapSegments.RemoveFirst();
             Destroy(firstSegment.gameObject);
 
-            var newSegment = Instantiate(MapPrefabs[Random.Range(0, MapPrefabs.Length)]);
+            var newSegment = Instantiate(MapPrefabs[UnityEngine.Random.Range(0, MapPrefabs.Length)]);
             newSegment.SetPositionAfterSegment(mapSegments.Last.Value);
             newSegment.transform.position = new Vector3(ShipController.transform.position.x, newSegment.transform.position.y, newSegment.transform.position.z);
             newSegment.transform.parent = MapParent;
@@ -117,7 +130,37 @@ public class GameManagement : MonoBehaviour
             Destroy(segment.gameObject);
         }
 
+        StopGameTimer();
         mapSegments.Clear();
         InitMap();
+    }
+
+
+    public void StartGameTimer()
+    {
+        ResetGameTimer();
+
+        isTimerRunning = true;
+        StartCoroutine(timer);
+    }
+    public void StopGameTimer()
+    {
+        isTimerRunning = false;
+        StopCoroutine(timer);
+    }
+    private void ResetGameTimer()
+    {
+        elapsedTime = 0f;
+    }
+
+    private IEnumerator CountUpScore()
+    {
+        while (isTimerRunning)
+        {
+            elapsedTime += Time.deltaTime;
+            totalTime = TimeSpan.FromSeconds(elapsedTime);
+            UIManager.Instance.SetScoreText(totalTime);
+            yield return null;
+        }
     }
 }
