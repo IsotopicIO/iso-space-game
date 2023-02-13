@@ -97,7 +97,7 @@ public class GameManagement : MonoBehaviour
 
     public void UpdateMap()
     {
-        //Update and pply current map scrolling speed to all map segments 
+        //Update and apply current map scrolling speed to all map segments 
 
         CurrentMovementSpeed += MapMovingAcceleration * Time.deltaTime;
         var deltaMovement = - CurrentMovementSpeed * Time.deltaTime * Vector3.forward;
