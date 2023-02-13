@@ -15,6 +15,7 @@ public class ShipController : MonoBehaviour
 {
     public GameManagement GameManagement;
     public Transform ShipVisualsParent;
+    public Camera ShipCamera;
 
     [Tooltip("The max horizontal speed that the ship can reach.")]
     public float TurningMaxSpeed = 30f;
@@ -28,12 +29,28 @@ public class ShipController : MonoBehaviour
     [Tooltip("This is multiplied with the ship's current horizontal speed, to get the Z rotation of the ship, based on turning ship")]
     public float RotationToTurnSpeedRatio = 1.3f;
 
-    public Camera shipCamera;
-    public Vector3 cameraOffset;
+    public Vector3 CameraOffset;
+
+    private Vector3 cameraVirtualOffset;
+    public float maxCameraHorizontalOffsetAtSpeed = 1f;
+
+    [SerializeField] private float maxFOV = 80;
+    [SerializeField] private float speedWhenMaxFOV = 50;
+    private float initialFOV;
+
 
     public ShipControllerInput CurrentInput = default;
 
     [HideInInspector] public float CurrentTurningSpeed = 0f;
+
+    public float CurrentSpeed { get => GameManagement.CurrentMovementSpeed; }
+
+
+    private void Awake()
+    {
+        initialFOV = ShipCamera.fieldOfView;
+        cameraVirtualOffset = CameraOffset;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -61,14 +78,17 @@ public class ShipController : MonoBehaviour
         var turningSign = CurrentInput.GetTurningSign();
         CurrentTurningSpeed = Mathf.Clamp(CurrentTurningSpeed + ((turningSign == 0 && !Mathf.Approximately(CurrentTurningSpeed, 0f)) ? -Mathf.Sign(CurrentTurningSpeed) * TurningSpeedDamping * Time.deltaTime : turningSign * TurningAccceleration * Time.deltaTime), -TurningMaxSpeed, TurningMaxSpeed);
 
-        transform.position += Vector3.right * CurrentTurningSpeed * Time.deltaTime;
+        transform.position += CurrentTurningSpeed * Time.deltaTime * Vector3.right;
 
         ShipVisualsParent.rotation = Quaternion.Euler(0f, 0f, -RotationToTurnSpeedRatio * CurrentTurningSpeed) * Quaternion.identity;
     }
 
     private void MoveCamera()
     {
-        shipCamera.transform.position = transform.position + cameraOffset;
+        cameraVirtualOffset = CameraOffset + CurrentTurningSpeed/TurningMaxSpeed * maxCameraHorizontalOffsetAtSpeed * Vector3.right;
+
+        ShipCamera.transform.position = transform.position + cameraVirtualOffset;
+        ShipCamera.fieldOfView = Mathf.Lerp(initialFOV, maxFOV, CurrentSpeed / speedWhenMaxFOV);
     }
 
     /// <summary>
