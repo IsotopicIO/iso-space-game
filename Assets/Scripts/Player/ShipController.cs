@@ -29,10 +29,10 @@ public class ShipController : MonoBehaviour
     [Tooltip("This is multiplied with the ship's current horizontal speed, to get the Z rotation of the ship, based on turning ship")]
     public float RotationToTurnSpeedRatio = 1.3f;
 
-    public Vector3 CameraOffset;
+    public Vector3 CameraTargetOffset = new Vector3(0f, 7.5f, -14.6f);
 
-    private Vector3 cameraVirtualOffset;
-    public float maxCameraHorizontalOffsetAtSpeed = 1f;
+    private Vector3 cameraWorldPosition;
+    public float CameraRestorativeForce = 10f;
 
     [SerializeField] private float maxFOV = 80;
     [SerializeField] private float speedWhenMaxFOV = 50;
@@ -49,7 +49,7 @@ public class ShipController : MonoBehaviour
     private void Awake()
     {
         initialFOV = ShipCamera.fieldOfView;
-        cameraVirtualOffset = CameraOffset;
+        cameraWorldPosition = CameraTargetOffset + transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -85,9 +85,9 @@ public class ShipController : MonoBehaviour
 
     private void MoveCamera()
     {
-        cameraVirtualOffset = CameraOffset + CurrentTurningSpeed/TurningMaxSpeed * maxCameraHorizontalOffsetAtSpeed * Vector3.right;
+        cameraWorldPosition += CameraRestorativeForce * Time.deltaTime * (transform.position + CameraTargetOffset - cameraWorldPosition);
 
-        ShipCamera.transform.position = transform.position + cameraVirtualOffset;
+        ShipCamera.transform.position = cameraWorldPosition;
         ShipCamera.fieldOfView = Mathf.Lerp(initialFOV, maxFOV, CurrentSpeed / speedWhenMaxFOV);
     }
 

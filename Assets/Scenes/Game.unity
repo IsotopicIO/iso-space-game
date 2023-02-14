@@ -525,6 +525,14 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
+      propertyPath: CameraTargetOffset.y
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
+      propertyPath: CameraTargetOffset.z
+      value: -14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: maxCameraHorizontalOffsetAtSpeed
       value: 2
       objectReference: {fileID: 0}
