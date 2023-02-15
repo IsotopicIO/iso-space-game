@@ -33,6 +33,10 @@ public class ShipController : MonoBehaviour
 
     private Vector3 cameraWorldPosition;
     public float CameraRestorativeForce = 10f;
+    public float CameraAdditionalOffsetOnMovement = 10f;
+
+    private Quaternion cameraInitialRotation;
+    public float CameraLookAtShipPercentage = 0.5f;
 
     [SerializeField] private float maxFOV = 80;
     [SerializeField] private float speedWhenMaxFOV = 50;
@@ -50,6 +54,7 @@ public class ShipController : MonoBehaviour
     {
         initialFOV = ShipCamera.fieldOfView;
         cameraWorldPosition = CameraTargetOffset + transform.position;
+        cameraInitialRotation = ShipCamera.transform.rotation;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -85,10 +90,12 @@ public class ShipController : MonoBehaviour
 
     private void MoveCamera()
     {
-        cameraWorldPosition += CameraRestorativeForce * Time.deltaTime * (transform.position + CameraTargetOffset - cameraWorldPosition);
+        cameraWorldPosition += CameraRestorativeForce * Time.deltaTime * (transform.position + CameraTargetOffset + CurrentTurningSpeed/TurningMaxSpeed * CameraAdditionalOffsetOnMovement * Vector3.right - cameraWorldPosition);
 
         ShipCamera.transform.position = cameraWorldPosition;
         ShipCamera.fieldOfView = Mathf.Lerp(initialFOV, maxFOV, CurrentSpeed / speedWhenMaxFOV);
+
+        ShipCamera.transform.rotation = Quaternion.Lerp(cameraInitialRotation, Quaternion.LookRotation((transform.position - ShipCamera.transform.position).normalized, Vector3.up), CameraLookAtShipPercentage);
     }
 
     /// <summary>
