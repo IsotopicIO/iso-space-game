@@ -500,7 +500,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1565308270}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -819,10 +819,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1565308265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 761e7310bc744a442a3983003db8dcee, type: 3}
+  m_Script: {fileID: 11500000, guid: 045853582e78ae646b30184fa7b2145f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 0}
 --- !u!1 &1796315778
 GameObject:
   m_ObjectHideFlags: 0
