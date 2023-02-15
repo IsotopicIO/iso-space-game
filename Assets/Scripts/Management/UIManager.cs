@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -36,4 +37,8 @@ public class UIManager : MonoBehaviour
         ScoreText.text = totalTime.ToString("m':'ss'.'ff");
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
