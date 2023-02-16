@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -505,45 +505,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 768346834}
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: shipCamera
-      value: 
-      objectReference: {fileID: 768346834}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraOffset.y
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraOffset.z
-      value: -14.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: GameManagement
       value: 
       objectReference: {fileID: 1227518142}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: speedWhenMaxFOV
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraTargetOffset.y
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraTargetOffset.z
-      value: -14.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraLookAtShipPercentage
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: CameraAdditionalOffsetOnMovement
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
-      propertyPath: maxCameraHorizontalOffsetAtSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4370712247174375897, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: m_RootOrder
       value: 4
