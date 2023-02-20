@@ -159,7 +159,7 @@ public class GameManagement : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             totalTime = TimeSpan.FromSeconds(elapsedTime);
-            UIManager.Instance.SetScoreText(totalTime);
+            GameUIManager.Instance.SetScoreText(totalTime);
             yield return null;
         }
     }

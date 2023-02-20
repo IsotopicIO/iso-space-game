@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class UIManager : MonoBehaviour
+public class GameUIManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI ScoreText;
 
     //create UIManager Instance for global referencing
-    public static UIManager Instance;
+    public static GameUIManager Instance;
 
     void Awake()
     {
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
         else
         {
             Destroy(this);
-            Debug.LogWarning($"Two instances of {nameof(UIManager)}, which is a Singleton, found in scene.");
+            Debug.LogWarning($"Two instances of {nameof(GameUIManager)}, which is a Singleton, found in scene.");
         }
     }
 
@@ -35,5 +35,4 @@ public class UIManager : MonoBehaviour
     {
         ScoreText.text = totalTime.ToString("m':'ss'.'ff");
     }
-
 }

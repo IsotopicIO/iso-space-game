@@ -28,6 +28,22 @@ Read the official github guide on contributions [here](https://github.com/firstc
 This project will use [Github Issues](https://github.com/IsotopicIO/iso-space-game/issues) for feature requests, asking for help, reporting issues, etc.
 Please add the appropriate labels when creating a new issue, and be as descriptive as possible.
 
-(More guidelines and info will be added here in the future)
+**Coding Practices**
+- Use **PascalCase** for public members of classes (e.g `public float MyNumber;`)
+- Use **camelCase** for private members of classes (e.g. `private Transform myTransform;`)
+- Do not clutter Awake/Start/Update. Isolate and organize logic of different "sub-components" in their own methods, and call these methods in Update or wherever needed.
+- On new scripts, describe the usage of said script at the top using a comment.
+
+**Script Description Comment template:**
+```
+////////////////////////////////////////////////////////////////////////////
+//
+//  This component will enable flight controls on the gameobject it is placed on,
+//  giving the player steering control of the ship, using A, D or LeftArrow, RightArrow
+//
+//  Attach ShipController to the ship game object.              
+//
+////////////////////////////////////////////////////////////////////////////
+```
 
 **Check out [these](https://github.com/IsotopicIO/iso-space-game/issues/5) features that can be worked on, while the main ideas of the game are being defined**
