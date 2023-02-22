@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class BaseEnemyShip : MonoBehaviour
 {
-    public float TargetXOffset { get; protected set; } = 0f;
-    public float HorizontalSpeedMultiplier = 0.6f;
-
+    //private
     private float newPositionTimer;
 
-    public float ChangePositionTimerMin = 0f;
-    public float ChangePositionTimerMax = 6f;
 
+    //pulic
+    public float ChangePositionTimerMin = 0f;
+    public float ChangePositionTimerMax = 6f;    
+    public float HorizontalSpeedMultiplier = 0.6f;
     public float NextXOffsetMin = 10f;
     public float NextXOffsetMax = 70f;
+    public float TargetXOffset { get; protected set; } = 0f;
+
+    public int Health = 100;
 
     private void Awake()
     {

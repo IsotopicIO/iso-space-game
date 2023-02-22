@@ -13,42 +13,40 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    public GameManagement GameManagement;
-    public Transform ShipVisualsParent;
+    //private
+    private float initialFOV;
+    [SerializeField] private float maxFOV = 80;
+    [SerializeField] private float speedWhenMaxFOV = 50;
+
+    private Quaternion cameraInitialRotation;
+
+    private Vector3 cameraWorldPosition;
+
+
+    //public
     public Camera ShipCamera;
 
-    [Tooltip("The max horizontal speed that the ship can reach.")]
-    public float TurningMaxSpeed = 30f;
-
+    public float CameraAdditionalOffsetOnMovement = 10f;
+    public float CameraLookAtShipPercentage = 0.5f;
+    public float CameraRestorativeForce = 10f;
+    public float CurrentSpeed { get => GameManagement.CurrentMovementSpeed; }
+    [HideInInspector] public float CurrentTurningSpeed = 0f;
+    [Tooltip("This is multiplied with the ship's current horizontal speed, to get the Z rotation of the ship, based on turning ship")]
+    public float RotationToTurnSpeedRatio = 1.3f;
     [Tooltip("The horizontal acceleration applied to the ship when player moves.")]
     public float TurningAccceleration = 40f;
-
+    [Tooltip("The max horizontal speed that the ship can reach.")]
+    public float TurningMaxSpeed = 30f;
     [Tooltip("The horizontal acceleration applied towards the opposite side of movement, when there is no input, to slow the ship down.")]
     public float TurningSpeedDamping = 20f;
 
-    [Tooltip("This is multiplied with the ship's current horizontal speed, to get the Z rotation of the ship, based on turning ship")]
-    public float RotationToTurnSpeedRatio = 1.3f;
+    public GameManagement GameManagement;
 
-    public Vector3 CameraTargetOffset = new Vector3(0f, 7.5f, -14.6f);
-
-    private Vector3 cameraWorldPosition;
-    public float CameraRestorativeForce = 10f;
-    public float CameraAdditionalOffsetOnMovement = 10f;
-
-    private Quaternion cameraInitialRotation;
-    public float CameraLookAtShipPercentage = 0.5f;
-
-    [SerializeField] private float maxFOV = 80;
-    [SerializeField] private float speedWhenMaxFOV = 50;
-    private float initialFOV;
-
+    public Transform ShipVisualsParent;
 
     public ShipControllerInput CurrentInput = default;
 
-    [HideInInspector] public float CurrentTurningSpeed = 0f;
-
-    public float CurrentSpeed { get => GameManagement.CurrentMovementSpeed; }
-
+    public Vector3 CameraTargetOffset = new Vector3(0f, 7.5f, -14.6f);
 
     private void Awake()
     {
@@ -71,11 +69,9 @@ public class ShipController : MonoBehaviour
 
     private void GetInput()
     {
-        CurrentInput = new ShipControllerInput
-        {
-            TurnRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow),
-            TurnLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)
-        };
+        CurrentInput.TurnRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        CurrentInput.TurnLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        CurrentInput.IsFiring = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Keypad0);
     }
 
     private void Move()
@@ -105,6 +101,7 @@ public class ShipController : MonoBehaviour
     {
         public bool TurnRight;
         public bool TurnLeft;
+        public bool IsFiring;
 
         public int GetTurningSign()
         {
