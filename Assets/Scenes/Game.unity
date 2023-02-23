@@ -336,8 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6578659037ece1241a303622fc32803a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  range: 200
+  Damage: 50
+  Range: 100
+  DamageRadius: 2
+  ShotsPerMinute: 60
 --- !u!114 &1213954636 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
@@ -749,6 +751,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
+      propertyPath: weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: CameraTargetOffset.y
       value: 7.5
       objectReference: {fileID: 0}
@@ -756,6 +762,10 @@ PrefabInstance:
       propertyPath: CameraTargetOffset.z
       value: -14.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1081507390}
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: CameraLookAtShipPercentage
       value: 0.1

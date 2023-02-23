@@ -26,6 +26,10 @@ public class BaseEnemyShip : MonoBehaviour
     private void Update()
     {
         UpdateMovement();
+        if(this.Health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void UpdateMovement()
