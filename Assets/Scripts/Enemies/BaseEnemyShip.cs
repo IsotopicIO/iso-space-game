@@ -10,13 +10,12 @@ public class BaseEnemyShip : MonoBehaviour
 
     //pulic
     public float ChangePositionTimerMin = 0f;
-    public float ChangePositionTimerMax = 6f;    
+    public float ChangePositionTimerMax = 6f;
+    public float Health = 100f;
     public float HorizontalSpeedMultiplier = 0.6f;
     public float NextXOffsetMin = 10f;
     public float NextXOffsetMax = 70f;
     public float TargetXOffset { get; protected set; } = 0f;
-
-    public int Health = 100;
 
     private void Awake()
     {

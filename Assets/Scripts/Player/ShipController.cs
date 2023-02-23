@@ -42,6 +42,8 @@ public class ShipController : MonoBehaviour
 
     public GameManagement GameManagement;
 
+    public GameObject[] weapons;
+
     public Transform ShipVisualsParent;
 
     public ShipControllerInput CurrentInput = default;
@@ -63,15 +65,29 @@ public class ShipController : MonoBehaviour
     private void Update()
     {
         GetInput();
+        Fire();
         Move();
         MoveCamera();
+        
+    }
+
+    private void Fire()
+    {
+        if (CurrentInput.IsFiring)
+        {
+            foreach(GameObject weapon in weapons)
+            {
+                var enemy = GameObject.Find("Enemy");
+                weapon.GetComponent<BaseWeaponBehavior>().FireWeapon(enemy);
+            }
+        }
     }
 
     private void GetInput()
     {
         CurrentInput.TurnRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
         CurrentInput.TurnLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-        CurrentInput.IsFiring = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Keypad0);
+        CurrentInput.IsFiring = Input.GetMouseButton(0);
     }
 
     private void Move()
