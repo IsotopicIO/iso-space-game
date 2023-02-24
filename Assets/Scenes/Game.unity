@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -324,7 +324,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e26417e83b8a14040ade545b4fe27131, type: 3}
   m_PrefabInstance: {fileID: 1880513799}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1081507394
+--- !u!114 &1081507392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -333,12 +333,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081507390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6578659037ece1241a303622fc32803a, type: 3}
+  m_Script: {fileID: 11500000, guid: b2650c7fd9c53c549932a74c48ded2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
-  Range: 100
-  DamageRadius: 2
+  Damage: 20
+  Range: 200
+  MaxHitAngle: 5
   ShotsPerMinute: 60
 --- !u!114 &1213954636 stripped
 MonoBehaviour:
@@ -765,7 +765,7 @@ PrefabInstance:
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 1081507390}
+      objectReference: {fileID: 1081507392}
     - target: {fileID: 4370712247174375896, guid: 8d4abc8a2d653c04ab24bfa0e446ec87, type: 3}
       propertyPath: CameraLookAtShipPercentage
       value: 0.1

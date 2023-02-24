@@ -32,6 +32,16 @@ public class BaseEnemyShip : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        GameManagement.RegisterEnemy(this);
+    }
+
+    private void OnDisable()
+    {
+        GameManagement.UnRegisterEnemy(this);
+    }
+
     private void UpdateMovement()
     {
         newPositionTimer -= Time.deltaTime;
