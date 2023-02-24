@@ -475,8 +475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3bed3c7704df2499ce77e324c85c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalSpeedMultiplier: 0.7
   ChangePositionTimerMin: 0.1
   ChangePositionTimerMax: 6
+  Health: 100
+  HorizontalSpeedMultiplier: 0.7
   NextXOffsetMin: 10
   NextXOffsetMax: 70
