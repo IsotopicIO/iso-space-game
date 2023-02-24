@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManagement : MonoBehaviour
 {
@@ -42,12 +43,15 @@ public class GameManagement : MonoBehaviour
     private bool isTimerRunning;
     private IEnumerator timer;
 
+    public static List<BaseEnemyShip> ActiveEnemies { get; private set; } = new List<BaseEnemyShip>();
+
     private void Awake()
     {
         //Singleton logic
         if (Instance == null)
         {
             Instance = this;
+
         } else
         {
             Destroy(this);
@@ -63,6 +67,18 @@ public class GameManagement : MonoBehaviour
         timer = CountUpScore();
 
         InitMap();
+    }
+
+    public static void RegisterEnemy(BaseEnemyShip enemy)
+    {
+        if (ActiveEnemies.Contains(enemy)) return;
+
+        ActiveEnemies.Add(enemy);
+    }
+
+    public static void UnRegisterEnemy(BaseEnemyShip enemy)
+    {
+        ActiveEnemies.Remove(enemy);
     }
 
     private void InitMap()

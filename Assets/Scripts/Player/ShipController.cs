@@ -42,7 +42,7 @@ public class ShipController : MonoBehaviour
 
     public GameManagement GameManagement;
 
-    public GameObject[] weapons;
+    public BaseWeaponBehavior[] weapons = new BaseWeaponBehavior[0];
 
     public Transform ShipVisualsParent;
 
@@ -75,10 +75,9 @@ public class ShipController : MonoBehaviour
     {
         if (CurrentInput.IsFiring)
         {
-            foreach(GameObject weapon in weapons)
+            foreach(BaseWeaponBehavior weapon in weapons)
             {
-                var enemy = GameObject.Find("Enemy");
-                weapon.GetComponent<BaseWeaponBehavior>().FireWeapon(enemy);
+                weapon.FireWeapon();
             }
         }
     }
