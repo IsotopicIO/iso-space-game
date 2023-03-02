@@ -18,15 +18,15 @@ public enum Size
 
 public class Hardpoints : MonoBehaviour
 {
-    public Types type;
-    public Size size;
-    public Attachment attachment;
+    public Types Type;
+    public Size Size;
+    public Attachment Attached;
 
     public void UseAttachment()
     {
-        if (attachment != null)
+        if (Attached != null)
         {
-            attachment.Use();
+            Attached.Use();
         }
     }
 }

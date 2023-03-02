@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Attachment : MonoBehaviour
 {
-    public Types type = Types.AllPurpose;
+    public Types Type = Types.AllPurpose;
 
     //placement for future ticket
     public void WillFit()
