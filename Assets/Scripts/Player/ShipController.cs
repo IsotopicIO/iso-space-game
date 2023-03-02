@@ -42,7 +42,7 @@ public class ShipController : MonoBehaviour
 
     public GameManagement GameManagement;
 
-    public BaseWeaponBehavior[] weapons = new BaseWeaponBehavior[0];
+    public Hardpoints[] hardpoints = new Hardpoints[0];
 
     public Transform ShipVisualsParent;
 
@@ -75,9 +75,9 @@ public class ShipController : MonoBehaviour
     {
         if (CurrentInput.IsFiring)
         {
-            foreach(BaseWeaponBehavior weapon in weapons)
+            foreach(Hardpoints hardpoint in hardpoints)
             {
-                weapon.FireWeapon();
+                hardpoint.UseAttachment();
             }
         }
     }

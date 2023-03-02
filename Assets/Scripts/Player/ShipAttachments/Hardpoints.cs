@@ -20,16 +20,13 @@ public class Hardpoints : MonoBehaviour
 {
     public Types type;
     public Size size;
-    public BaseWeaponBehavior weapon;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Attachment attachment;
 
-    // Update is called once per frame
-    void Update()
+    public void UseAttachment()
     {
-        
+        if (attachment != null)
+        {
+            attachment.Use();
+        }
     }
 }
