@@ -34,6 +34,12 @@ Please add the appropriate labels when creating a new issue, and be as descripti
 - Do not clutter Awake/Start/Update. Isolate and organize logic of different "sub-components" in their own methods, and call these methods in Update or wherever needed.
 - On new scripts, describe the usage of said script at the top using a comment.
 
+**Naming Practices**
+- `I_MyInterface`- "I_" prefix for interfaces.
+- `E_MyEnum` - "E_" prefix for enums.
+- `BaseMyClass` - "Base" prefix for base classes.
+- `delegate OnStatusChangedHandler(object source, MyEventArgs args)` - "Handler" suffix for event handler, and "EventArgs" suffix for event args class.
+
 **Script Description Comment template:**
 ```
 ////////////////////////////////////////////////////////////////////////////
