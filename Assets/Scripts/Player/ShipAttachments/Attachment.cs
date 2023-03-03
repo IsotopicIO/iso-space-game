@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Attachment : MonoBehaviour
+public abstract class Attachment : MonoBehaviour, I_Usable
 {
     public Types Type = Types.AllPurpose;
 

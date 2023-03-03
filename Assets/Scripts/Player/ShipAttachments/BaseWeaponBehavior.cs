@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseWeaponBehavior : Attachment
+public abstract class BaseWeaponBehavior : Attachment, I_Activity
 {
     //properties
     protected bool IsOnCooldown = false;
@@ -15,6 +15,8 @@ public abstract class BaseWeaponBehavior : Attachment
     public float MaxHitAngle;
 
     public int ShotsPerMinute = 0;
+
+    public Status Status => CanFire();
 
     //methods
     public bool CanFire()
